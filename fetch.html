@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
+        integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Document</title>
+</head>
+
+<body>
+     <div class="container mt-3">
+        <h1 class="text-center mb-4">Products</h1>
+        <hr>
+        <div class="row" id="products">   
+        </div>
+    </div>
+    </div>
+    <script>
+            fetch("https://fakestoreapi.com/products")
+            .then(response => response.json())
+            .then(data => {
+                var products = document.getElementById("products");
+                data.forEach(product => {
+                    products.innerHTML += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="${product.image}"  class="card-img-top p-3"style="height:250px; ">
+                            <div class="card-body">
+                                <h5 class="card-title"> </h5>
+                                <p class="card-text">
+                                    ${product.description.slice(0,100)}...
+                                </p>
+                                <h5>   $${product.price} </h5>
+                                <button class="btn btn-primary">Buy Now</button>
+                            </div>
+                        </div>
+                    </div> 
+                    `;
+                });
+            })
+            .catch(error => {
+                console.log("Error:", error);
+            });
+
+    </script>
+</body>
+
+</html>

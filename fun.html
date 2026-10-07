@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <body>
+        <h1 id="myh1"></h1>
+        <button onclick="beginTimer()">start</button>
+        <button onclick="stopit()">pause</button>
+        <button onclick="resetit()">Reset</button>
+        <script>
+            // var sec = 60; var mins = 59; var hrs = 1;
+            var sec=0; var mins=0; var hrs=0;
+            var store;
+            document.getElementById("myh1").innerHTML = `${hrs.toString().padStart(2, "0")}: ${mins.toString().padStart(2, "0")}: ${sec.toString().padStart(2, "0")}`
+            function stopit() {
+                clearInterval(store);
+            }
+            function reversetit() {
+                sec = 0; mins = 0; hrs = 0;
+                document.getElementById("myh1").innerHTML = `${hrs.toString().padStart(2, "0")}: ${mins.toString().padStart(2, "0")}: ${sec.toString().padStart(2, "0")}`
+            }
+            function beginTimer() {
+                store = setInterval(startTime, 1000)
+            }
+            function startTime() {
+                sec--;
+                if (sec == 60) {
+                    mins--;
+                    sec = 59;
+                }
+                if (mins == 0) {
+                    hrs--;
+                    sec = 59;
+                    mins = 59;
+                }
+                document.getElementById("myh1").innerHTML = `${hrs.toString().padStart(2, "0")}: ${mins.toString().padStart(2, "0")}: ${sec.toString().padStart(2, "0")}`
+            }
+        </script>
+
+    </body>
+</html> 
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+    var student=new Object();
+student.Name="sai",
+student.age=21,
+student.address="hyd"
+console.log(student.Name+""+student.age+"");
+console.log(student);
+document.write(student);//browser will not pass value of objects only in console it will allow
+var student={
+    first:"sai",
+    last:"priya",
+    address:"hyd"
+ }
+ for (let k in student)
+    document.write(k+":"+student[k]+"<br>");
+</script> 
+</body>
+</html> -->
